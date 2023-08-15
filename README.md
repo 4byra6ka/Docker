@@ -6,15 +6,15 @@ docker run --name django --network host -it python bash
 	apt-get update
 	apt-get install nano
 	nano test/settings.py
-DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.postgresql',
-		'NAME': 'test',
-		'USER': 'postgres',
-		'PASSWORD': 'postgres',
-		'HOST': '127.0.0.1',
-		'PORT': '5433'
-	}
-}	
+		DATABASES = {
+			'default': {
+				'ENGINE': 'django.db.backends.postgresql',
+				'NAME': 'test',
+				'USER': 'postgres',
+				'PASSWORD': 'postgres',
+				'HOST': '127.0.0.1',
+				'PORT': '5433'
+			}
+		}	
 	python manage.py migrate
 	./manage.py runserver
