@@ -23,17 +23,19 @@ services:
     build: .
 #    volumes:
 #      - ./data/app:/app
-    environment:
-      STRIPE_API_KEY: "sk_test"
-      EMAIL_USER: "test@test.ru"
-      EMAIL_PASSWORD: "password"
-      CELERY_BROKER_URL: "redis://redis:6379"
-      CELERY_RESULT_BACKEND: "redis://redis:6379"
-      POSTGRES_HOST: db
-      POSTGRES_NAME: dfr
-      POSTGRES_USER: dfr
-      POSTGRES_PASSWORD: dfr
-      POSTGRES_PORT: 5432
+    env_file:
+      - .env
+#    environment:
+#      STRIPE_API_KEY: "sk_test"
+#      EMAIL_USER: "test@test.ru"
+#      EMAIL_PASSWORD: "password"
+#      CELERY_BROKER_URL: "redis://redis:6379"
+#      CELERY_RESULT_BACKEND: "redis://redis:6379"
+#      POSTGRES_HOST: db
+#      POSTGRES_NAME: dfr
+#      POSTGRES_USER: dfr
+#      POSTGRES_PASSWORD: dfr
+#      POSTGRES_PORT: 5432
     command: >
       bash -c "python manage.py migrate --noinput 
       && python manage.py runserver 0.0.0.0:8000"
